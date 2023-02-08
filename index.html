@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <h2>
+      {{ `To do: (${notCompletedItems.length})` }}
+    </h2>
+    <input type="text" v-model="newItem" placeholder="Type something and press ENTER" @keyup.enter="addItemToList()" />
+    <ol class="draggable" @drop="onDrop($event, false)" @dragover.prevent @dragenter.prevent>
+      <li v-for="(item, index) in notCompletedItems" :key="item.text + index" @dragstart="onDragStart($event, item)"
+        draggable="true">
+        <label>
+          <input type="checkbox" @click="item.completed = true" />
+          <span>
+            {{ item.text }}
+          </span>
+          <a href="#" class="remove" @click="removeItem(item.id)">Remove</a>
+        </label>
+      </li>
+    </ol>
+    <hr />
+    <h2>
+      {{ `Completed items: (${completedItems.length})` }}
+    </h2>
+    <ol class="draggable" @drop="onDrop($event, true)" @dragover.prevent @dragenter.prevent>
+      <li v-for="(item, index) in completedItems" :key="item.text + index" @dragstart="onDragStart($event, item)"
+        draggable="true">
+        <label>
+          <input type="checkbox" @click="item.completed = false" checked />
+          <span>
+            {{ item.text }}
+          </span>
+          <a href="#" class="remove" @click="removeItem(item.id)">Remove</a>
+        </label>
+      </li>
+    </ol>
+  </div>
+
+  <script src="./index.js"></script>
+</body>
+
+</html>

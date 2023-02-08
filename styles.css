@@ -1,0 +1,47 @@
+body {
+  background: #20262E;
+  padding: 20px;
+  font-family: Helvetica;
+}
+
+#app {
+  background: #fff;
+  border-radius: 4px;
+  padding: 20px;
+  transition: all 0.2s;
+}
+
+li {
+  margin: 8px 0;
+}
+
+h2 {
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+del {
+  color: rgba(0, 0, 0, 0.3);
+}
+
+input[type="text"] {
+  padding: 10px;
+  width: 200px;
+}
+
+label .remove {
+  display: none;
+  color: red;
+}
+
+label:hover .remove {
+  display: inline-block;
+  margin-left: 10px;
+  color: red;
+  opacity: 0.5;
+}
+
+.draggable {
+  min-width: 200px;
+  min-height: 100px;
+}
